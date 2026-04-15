@@ -1,12 +1,12 @@
 name: Pipeline DevOps
 
 on:
-   workflow_dispatch:
+ workflow_dispatch:
+   
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
 jobs:
   build:
     name: Build
