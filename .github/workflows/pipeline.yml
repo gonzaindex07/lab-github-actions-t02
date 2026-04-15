@@ -1,6 +1,7 @@
 name: Pipeline DevOps
 
 on:
+   workflow_dispatch:
   push:
     branches: [main]
   pull_request:
