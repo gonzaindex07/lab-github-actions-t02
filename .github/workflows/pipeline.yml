@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-push:
-      - name: Build & Push Docker Image
+    name: Build & Push Docker Image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
@@ -20,7 +20,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
 
       - name: Build y push imagen
         uses: docker/build-push-action@v5
