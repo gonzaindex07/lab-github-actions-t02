@@ -49,8 +49,7 @@ jobs:
 
       - name: Usar tag del job anterior
         run: |
-          
-echo "Escaneando imagen con tag ${{ needs.build.outputs.image-tag }}"
+          echo "Escaneando imagen con tag ${{ needs.build.outputs.image-tag }}"
 
       - name: Build imagen para escaneo
         uses: docker/build-push-action@v5
