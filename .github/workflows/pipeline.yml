@@ -17,7 +17,7 @@ jobs:
     name: Build Docker Image
     runs-on: ubuntu-latest
     outputs:
-    image-tag: ${{ steps.tag.outputs.value }}   # ← expone el output del job
+      image-tag: ${{ steps.tag.outputs.value }}   # ← expone el output del job
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
@@ -45,6 +45,9 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
+
+      - name: Usar tag del job anterior
+        run: echo "Escaneando imagen con tag ${{ needs.build.outputs.image-tag }}"
 
       - name: Build imagen para escaneo
         uses: docker/build-push-action@v5
