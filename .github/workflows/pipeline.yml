@@ -7,13 +7,29 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env: 
+  APP_NAME: lab-github-actions
+  REGISTRY: docker.io
+  IMAGE_TAG: ${{ github.sha }}
+
 jobs:
   build:
     name: Build Docker Image
     runs-on: ubuntu-latest
+    outputs:
+    image-tag: ${{ steps.tag.outputs.value }}   # ← expone el output del job
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
+
+      - name: Generar un tag de la imagen
+        id: tag
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          echo "value=$SHORT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Usar el tag
+        run: echo "Tag: ${{ steps.tag.outputs.value }}"
 
       - name: Build imagen (sin push)
         uses: docker/build-push-action@v5
