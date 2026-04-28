@@ -15,9 +15,8 @@ env:
 jobs:
   build:
     name: Build Docker Image
-       run: |
-         runs-on: ubuntu-latest
-      outputs:
+    runs-on: ubuntu-latest
+    outputs:
       image-tag: ${{ steps.tag.outputs.value }}   # ← expone el output del job
     steps:
       - name: Checkout código
