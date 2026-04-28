@@ -15,7 +15,6 @@ env:
 jobs:
   build:
     name: Build Docker Image
-     - name: Generar reporte
        run: |
          runs-on: ubuntu-latest
       outputs:
