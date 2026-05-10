@@ -55,7 +55,7 @@ jobs:
 
 
   gitleaks:
-    name: Secret Scan (Gitleaks)
+    -  name: Secret Scan (Gitleaks)
     runs-on: ubuntu-latest
     needs: build
   steps:
